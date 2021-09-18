@@ -22,7 +22,11 @@ const CartSummary = (props : CartSummaryProps) => {
 
     const [orderLineItems, setOrderLineItems] = useState<ProductOrderLineItem[]>(props.cartitems);
 
-    useEffect(() => { setOrderLineItems(props.cartitems); }, [props.cartitems]);
+    useEffect(() =>
+    {
+        console.log("useEffect for setting order lines");
+        setOrderLineItems(props.cartitems);
+    }, [props.cartitems]);
 
     useEffect(() => {
         fetch('/api/ShoppingCart/CalculateLineItems', {
@@ -63,20 +67,22 @@ const CartSummary = (props : CartSummaryProps) => {
                     <tr key={item.lineItem.productId}>
                         <td>{item.itemName}</td>
                         <td>{item.lineItem.quantity}</td>
-                        <td>{item.itemPrice}</td>
-                        <td>{item.salesTax}</td>
-                        <td>{item.importTax}</td>
-                        <td>{item.itemPrice + item.salesTax + item.importTax}</td>
+                        <td>${item.itemPrice.toFixed(2)}</td>
+                        <td>${item.salesTax.toFixed(2)}</td>
+                        <td>${item.importTax.toFixed(2)}</td>
+                        <td>${(item.itemPrice + item.salesTax + item.importTax).toFixed(2)}</td>
                     </tr>
                 )}
+               
                 <tr key="Total">
-                    <td>Total</td>
-                    <td>{lineItems.reduce((a, v) => a = a + v.lineItem.quantity, 0)}</td>
-                    <td>${lineItems.reduce((a, v) => a = a + v.itemPrice, 0)}</td>
-                    <td>${lineItems.reduce((a, v) => a = a + v.salesTax, 0)}</td>
-                    <td>${lineItems.reduce((a, v) => a = a + v.importTax, 0)}</td>
-                    <td>${lineItems.reduce((a, v) => a = a + v.importTax + v.itemPrice + v.salesTax, 0)}</td>
+                    <td><b>Total</b></td>
+                    <td><b>{lineItems.reduce((a, v) => a = a + v.lineItem.quantity, 0)}</b></td>
+                    <td><b>${lineItems.reduce((a, v) => a = a + v.itemPrice, 0).toFixed(2)}</b></td>
+                    <td><b>${lineItems.reduce((a, v) => a = a + v.salesTax, 0).toFixed(2)}</b></td>
+                    <td><b>${lineItems.reduce((a, v) => a = a + v.importTax, 0).toFixed(2)}</b></td>
+                    <td><b>${lineItems.reduce((a, v) => a = a + v.importTax + v.itemPrice + v.salesTax, 0).toFixed(2)}</b></td>           
                 </tr>
+                
             </tbody>
         </table>
     )

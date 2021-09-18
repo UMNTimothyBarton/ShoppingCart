@@ -9,7 +9,6 @@ const Home = () => {
     const [productLineItems, setProductLineItems] = useState<ProductOrderLineItem[]>([]);
 
     function onProductsCalculate(newState: ProductOrderLineItem[]) {
-        console.log(newState);
         setProductLineItems(newState);
     }
 

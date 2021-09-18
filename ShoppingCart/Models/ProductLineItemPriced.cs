@@ -24,7 +24,7 @@ namespace ShoppingCart.Models
         {
             get
             {
-                return IsSalesTaxable ? RoundToNearestFiveCents(LineItem.Quantity * ItemPrice * .05) : 0;
+                return IsSalesTaxable ? RoundToNearestFiveCents(LineItem.Quantity * ItemPrice * .10) : 0;
             }
         }
 
@@ -32,13 +32,14 @@ namespace ShoppingCart.Models
         {
             get
             {
-                return IsDomestic ? 0 : RoundToNearestFiveCents(LineItem.Quantity * ItemPrice * .1);
+                return IsDomestic ? 0 : RoundToNearestFiveCents(LineItem.Quantity * ItemPrice * .05);
             }
         }
 
         private static double RoundToNearestFiveCents(double price)
         {
-            return Math.Round(price * 20, MidpointRounding.AwayFromZero) / 20;
+           // return Math.Round(price * 20, MidpointRounding.AwayFromZero) / 20;
+            return Math.Ceiling((double)(price * 20)) / 20;
         }
     }
 }
