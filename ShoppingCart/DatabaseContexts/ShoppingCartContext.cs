@@ -1,20 +1,31 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoppingCart.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ShoppingCart.DatabaseContexts
 {
+    /// <summary>
+    /// The database context for the shopping cart application.
+    /// </summary>
     public class ShoppingCartContext : DbContext
     {
+        /// <summary>
+        /// Allows configuring the database context.
+        /// </summary>
+        /// <param name="options">The options before configuration.</param>
         public ShoppingCartContext(DbContextOptions<ShoppingCartContext> options) : base(options)
         {
         }
 
+        /// <summary>
+        /// Gets or sets the current list of products.
+        /// </summary>
         public DbSet<ProductModel> Products { get; set; }
 
+        /// <summary>
+        /// Seeds the database if it is not already populated.
+        /// </summary>
+        /// <param name="context">The database context being seeded.</param>
         internal static void Initialize(ShoppingCartContext context)
         {
             context.Database.EnsureCreated();

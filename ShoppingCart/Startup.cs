@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,16 +10,29 @@ using ShoppingCart.Repositories;
 
 namespace ShoppingCart
 {
+    /// <summary>
+    /// The startup object for the application.
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Creates the startup with the given configuration.
+        /// </summary>
+        /// <param name="configuration">The configuration used to start the application.</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Gets the current configuration.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Sets up the dependencies that will be injected, along with the database context and hosting routes.
+        /// </summary>
+        /// <param name="services">The current services collection to add to.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ShoppingCartContext>(opt => opt.UseInMemoryDatabase("ShoppingCart"));
@@ -37,7 +48,11 @@ namespace ShoppingCart
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Configures the application environment.   Will seed the database context.
+        /// </summary>
+        /// <param name="app">The application being built.</param>
+        /// <param name="env">The hosting environment.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
