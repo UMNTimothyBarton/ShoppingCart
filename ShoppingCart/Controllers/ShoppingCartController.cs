@@ -29,26 +29,30 @@ namespace ShoppingCart.Controllers
 
                 ProductModel productInfo = _productRepository.GetProduct(item.ProductId);
 
+                priced.LineItem = item;
+
                 priced.ItemPrice = productInfo.Price * item.Quantity;
                 priced.IsDomestic = productInfo.IsDomestic;
                 priced.IsSalesTaxable = productInfo.IsSalesTaxable;
+                priced.ItemName = productInfo.Name;
 
                 response.Add(priced);
             }
 
-
-            //ProductOrderLineItem sampleItem = new ProductOrderLineItem() { ProductId = 1, Quantity = 1 };
-           // ProductLineItemPriced priced = new ProductLineItemPriced() { LineItem = sampleItem, ItemPrice = 35.52 };
-
-            //response.Add(priced);
             return response;
         }
 
         [HttpGet("GetAllProducts")]
         public List<ProductModel> GetAllProducts()
         {
+            int numberOfProducts = 6;
             List<ProductModel> products = new();
-            products.Add(new ProductModel() { Id = 1, Name = "Skittles", Description = "Taste the rainbow.", Price = 15.99 });
+
+            for (int i = 1; i <= numberOfProducts; i++)
+            {
+                products.Add(new ProductModel() { Id = i, Name = String.Format("Skittles {0}", i), Description = "Taste the rainbow.", Price = 15.99 });
+            }
+
             return products;
         }
     }

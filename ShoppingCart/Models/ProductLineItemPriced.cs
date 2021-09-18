@@ -11,6 +11,8 @@ namespace ShoppingCart.Models
         public ProductOrderLineItem LineItem { get; set; }
 
         public double ItemPrice { get; set; }
+        
+        public string ItemName { get; set; }
 
         [JsonIgnore]
         internal bool IsDomestic { get; set; } = true;

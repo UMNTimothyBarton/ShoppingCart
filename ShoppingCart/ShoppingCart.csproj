@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\components\CartSummary.tsx" />
+    <None Remove="ClientApp\src\components\ProductSelection.tsx" />
   </ItemGroup>
 
   <ItemGroup>

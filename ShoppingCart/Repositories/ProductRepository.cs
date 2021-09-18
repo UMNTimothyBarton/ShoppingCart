@@ -10,8 +10,15 @@ namespace ShoppingCart.Repositories
     {
         public List<ProductModel> GetAllProducts()
         {
+            int numberOfProducts = 6;
+
             List<ProductModel> products = new();
-            products.Add(new ProductModel() { Id = 1, Name = "Skittles", Description = "Taste the rainbow.", Price = 15.99 });
+
+            for (int i = 1; i <= numberOfProducts; i++)
+            {
+                products.Add(new ProductModel() { Id = i, Name = String.Format("Skittles {0}", i), Description = "Taste the rainbow.", Price = 15.99 });
+            }
+
             return products;
         }
 
