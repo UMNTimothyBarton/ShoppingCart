@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShoppingCart.DatabaseContexts;
 using ShoppingCart.Models;
 using ShoppingCart.Repositories;
 using System;
@@ -13,20 +14,23 @@ namespace ShoppingCart.Controllers
     public class ShoppingCartController : ControllerBase
     {
         private IProductRepository _productRepository;
+
+     
+
         public ShoppingCartController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
         [HttpPost("CalculateLineItems")]
-        public List<ProductLineItemPriced> CalculateLineItems([FromBody] List<ProductOrderLineItem> cartItems)
+        public async Task<List<ProductLineItemPriced>> CalculateLineItems([FromBody] List<ProductOrderLineItem> cartItems)
         {
             List<ProductLineItemPriced> response = new();
 
             foreach (ProductOrderLineItem item in cartItems)
             {
                 ProductLineItemPriced priced = new() { LineItem = item };
-                ProductModel productInfo = _productRepository.GetProduct(item.ProductId);
+                ProductModel productInfo = await _productRepository.GetProductAsync(item.ProductId);
                 priced.ItemPrice = productInfo.Price * item.Quantity;
                 priced.IsDomestic = productInfo.IsDomestic;
                 priced.IsSalesTaxable = productInfo.IsSalesTaxable;

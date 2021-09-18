@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import * as React from 'react'
+import {
+    useState, useEffect
+} from 'react';
 import CartSummary, { LineItemInfo } from './CartSummary';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import ProductSelection, { ProductInfo } from './ProductSelection';

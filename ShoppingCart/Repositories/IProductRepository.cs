@@ -10,6 +10,6 @@ namespace ShoppingCart.Repositories
     {
         public List<ProductModel> GetAllProducts();
 
-        public ProductModel GetProduct(int productId);
+        public ValueTask<ProductModel> GetProductAsync(int productId);
     }
 }

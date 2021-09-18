@@ -1,4 +1,7 @@
-﻿import React, { useEffect, useState } from 'react'
+﻿import * as React from 'react'
+import {
+    useState, useEffect
+} from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { ProductOrderLineItem } from './CartSummary'
 
@@ -59,11 +62,11 @@ const ProductSelection = (props : ProductSelectionProps) =>
     }
 
     return (
-        <Container fluid>
-            <Row xs={3}> 
+        <Container>
+            <Row xs={5} >
                 {productsList.map((item: ProductInfo) =>
                     <Col>
-                        <Card>
+                        <Card style={{ height:300 }}>
                             <Card.Header>{item.name}</Card.Header>
                             <Card.Body>
                                 <Card.Title>${item.price.toFixed(2)}</Card.Title>
