@@ -9,6 +9,7 @@ namespace ShoppingCart.Controllers
     /// <summary>
     /// Controller for shopping cart functions such as calculating item prices.
     /// </summary>
+    [Produces("application/json")]
     [ApiController]
     [Route("api/[controller]")]
     public class ShoppingCartController : ControllerBase
