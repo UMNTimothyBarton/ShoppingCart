@@ -1,3 +1,8 @@
+Prerequisites and Setup
+-	Requires Visual Studio 2019 and .NET 5
+-	In the project properties (Build tab), change the XML documentation generation path to the local folder.
+-	Runs with built-in server settings, should run without modification.
+
 Basic design and implementation strategies.
 -	Separate components for the product selection and cart computation components.
 -	Minimal data transfer size due to passing id's instead of full product details where possible.
