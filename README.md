@@ -15,7 +15,7 @@ Basic design and implementation strategies.
 Tasks
 -----
 1. Running tests - Run the MSTests directly from Visual Studio, or run "vstest.console.exe ShoppingCartTests.dll" from the developer command line.
-2. Finding the API documentation - Navigate to https://localhost:5001/swagger to see the documentation.
+2. Finding the API documentation - Navigate to https://localhost:<port>/swagger to see the documentation.
 
 To do list given more time :
 1.	Adding language translation (along with currency handling)
