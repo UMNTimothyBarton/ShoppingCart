@@ -16,7 +16,7 @@ const Home = () => {
     }
 
     return (
-        <Container>
+        <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
             <Row>
                 <Col>
                     <ProductSelection onProductsChange={onProductsCalculate} />

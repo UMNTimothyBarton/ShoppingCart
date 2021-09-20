@@ -62,13 +62,13 @@ const ProductSelection = (props : ProductSelectionProps) =>
     }
 
     return (
-        <Container>
-            <Row xs={5} >
+        <Container fluid>
+            <Row xs={5} style={{ maxHeight: 400, overflowY: 'scroll' }}>
                 {productsList.map((item: ProductInfo) =>
                     <Col>
-                        <Card style={{ height:300 }}>
-                            <Card.Header>{item.name}</Card.Header>
+                        <Card style={{ height:300 }}>                     
                             <Card.Body>
+                                <Card.Header>{item.name}</Card.Header>
                                 <Card.Title>${item.price.toFixed(2)}</Card.Title>
                                 <Card.Text>
                                     {item.description}

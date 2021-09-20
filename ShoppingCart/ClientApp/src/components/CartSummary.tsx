@@ -2,6 +2,7 @@
 import {
     useState, useEffect
 } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 export interface LineItemInfo {
     lineItem: ProductOrderLineItem;
@@ -54,7 +55,9 @@ const CartSummary = (props : CartSummaryProps) => {
     }
 
     return (
-        <table className='table table-striped' aria-labelledby="tabelLabel">
+        <Container fluid style={{paddingLeft: 0, paddingRight: 0 }}>
+        <Row>   
+        <table className='table table-striped' aria-labelledby="tabelLabel" >
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -87,7 +90,9 @@ const CartSummary = (props : CartSummaryProps) => {
                 </tr>
                 
             </tbody>
-        </table>
+                </table>
+            </Row>
+            </Container>
     )
 };
 

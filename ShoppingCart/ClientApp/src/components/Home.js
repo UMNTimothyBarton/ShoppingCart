@@ -10,7 +10,7 @@ var Home = function () {
     function onProductsCalculate(newState) {
         setProductLineItems(newState);
     }
-    return (React.createElement(react_bootstrap_1.Container, null,
+    return (React.createElement(react_bootstrap_1.Container, { fluid: true, style: { paddingLeft: 0, paddingRight: 0 } },
         React.createElement(react_bootstrap_1.Row, null,
             React.createElement(react_bootstrap_1.Col, null,
                 React.createElement(ProductSelection_1.default, { onProductsChange: onProductsCalculate }))),

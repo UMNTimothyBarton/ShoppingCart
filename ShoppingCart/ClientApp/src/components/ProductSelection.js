@@ -45,12 +45,12 @@ var ProductSelection = function (props) {
             setSelectedProducts([]);
         }
     }
-    return (React.createElement(react_bootstrap_1.Container, null,
-        React.createElement(react_bootstrap_1.Row, { xs: 5 }, productsList.map(function (item) {
+    return (React.createElement(react_bootstrap_1.Container, { fluid: true },
+        React.createElement(react_bootstrap_1.Row, { xs: 5, style: { maxHeight: 400, overflowY: 'scroll' } }, productsList.map(function (item) {
             return React.createElement(react_bootstrap_1.Col, null,
                 React.createElement(react_bootstrap_1.Card, { style: { height: 300 } },
-                    React.createElement(react_bootstrap_1.Card.Header, null, item.name),
                     React.createElement(react_bootstrap_1.Card.Body, null,
+                        React.createElement(react_bootstrap_1.Card.Header, null, item.name),
                         React.createElement(react_bootstrap_1.Card.Title, null,
                             "$",
                             item.price.toFixed(2)),

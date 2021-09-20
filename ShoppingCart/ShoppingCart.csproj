@@ -9,6 +9,10 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\herr_\source\repos\ShoppingCart\ShoppingCart\ShoppingCart.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.10" />
@@ -29,8 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove=".xml" />
     <None Remove="ClientApp\src\components\CartSummary.tsx" />
     <None Remove="ClientApp\src\components\ProductSelection.tsx" />
+    <None Remove="ShoppingCart.xml" />
   </ItemGroup>
 
   <ItemGroup>
